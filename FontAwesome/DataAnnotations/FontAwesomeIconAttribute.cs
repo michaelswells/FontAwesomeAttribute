@@ -13,7 +13,25 @@ namespace FontAwesome.DataAnnotations
   public sealed class FontAwesomeAttribute : Attribute
   {
     #region Member Fields
-
+#if NETSTANDARD2_0
+    private string? _css = nameof(Css);
+    private string? _fixedWidth = nameof(FixedWidth);
+    private string? _icon1 = nameof(Icon1);
+    private string? _icon2 = nameof(Icon2);
+    private string? _iconColor1 = nameof(IconColor1);
+    private string? _iconColor2 = nameof(IconColor2);
+    private string? _iconCss1 = nameof(IconCss1);
+    private string? _iconCss2 = nameof(IconCss2);
+    private string? _iconSize1 = nameof(IconSize1);
+    private string? _iconSize2 = nameof(IconSize2);
+    private string? _iconStackSize1 = nameof(IconStackSize1);
+    private string? _iconStackSize2 = nameof(IconStackSize2);
+    private string? _iconStyle1 = nameof(IconStyle1);
+    private string? _iconStyle2 = nameof(IconStyle2);
+    private string? _name = nameof(Name);
+    private string? _stacked = nameof(Stacked);
+    private string? _stackSize = nameof(StackSize);
+#else
     private string? _css = new string(nameof(Css));
     private string? _fixedWidth = new string(nameof(FixedWidth));
     private string? _icon1 = new string(nameof(Icon1));
@@ -31,7 +49,7 @@ namespace FontAwesome.DataAnnotations
     private string? _name = new string(nameof(Name));
     private string? _stacked = new string(nameof(Stacked));
     private string? _stackSize = new string(nameof(StackSize));
-
+#endif
     #endregion Member Fields
 
     #region All Constructors
@@ -362,9 +380,9 @@ namespace FontAwesome.DataAnnotations
       }
     }
 
-    #endregion Properties
+#endregion Properties
 
-    #region Methods
+#region Methods
 
     /// <summary>
     /// Gets the UI display string for FixedWidth.
@@ -446,6 +464,6 @@ namespace FontAwesome.DataAnnotations
     /// </summary>
     public string? GetStackSize() => $"{(!_stackSize!.Equals(nameof(StackSize)) ? _stackSize : string.Empty)}";
 
-    #endregion Methods
+#endregion Methods
   }
 }
